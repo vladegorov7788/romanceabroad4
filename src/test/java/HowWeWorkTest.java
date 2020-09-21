@@ -3,17 +3,20 @@ import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.concurrent.TimeUnit;
+
 public class HowWeWorkTest extends BaseUI {
     String currentUrlHowWeWork;
-    String expectedUrlHowWeWork = "https://romanceabroad.com/users/search";
 
 
     @Test
     public void testHowWeWork() {
         driver.findElement(Locators.LINK_HOW_WE_WORK).click();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
         currentUrlHowWeWork = driver.getCurrentUrl();
         System.out.println(currentUrlHowWeWork);
-        Assert.assertEquals(currentUrlHowWeWork, expectedUrlHowWeWork);
+        Assert.assertEquals(currentUrlHowWeWork, Data.expectedUrlHowWeWork);
 
     }
 
